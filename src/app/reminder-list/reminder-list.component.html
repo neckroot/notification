@@ -8,9 +8,11 @@
   }
 
   <tr mat-header-row *matHeaderRowDef="headers"></tr>
+
   <tr
     mat-row
     *matRowDef="let i = index; columns: headers;"
     (dblclick)="goToDetails(i)"></tr>
+
 </table>
 
