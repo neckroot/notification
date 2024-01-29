@@ -2,13 +2,21 @@ export const enum Status {
   new = 'Новый',
   executed = 'Исполнен',
   planned = 'Запланирован',
-  expired = 'Просрочен'
+  expired = 'Просрочен',
 }
 
 export interface Reminder {
-    status: Status,
-    shortDescription: string,
-    fullDescription: string,
-    creationDatetime: Date,
-    dueDatetime: Date
+  status: Status;
+  shortDescription: string;
+  fullDescription: string;
+  creationDatetime: Date;
+  dueDatetime: Date;
 }
+
+export const tableHeaders = {
+  status: 'Статус',
+  shortDescription: 'Краткое описание',
+  fullDescription: 'Полное описание',
+  creationDatetime: 'Дата и время создания',
+  dueDatetime: 'Дата и время выполнения',
+};
