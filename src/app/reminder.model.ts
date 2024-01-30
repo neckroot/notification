@@ -9,8 +9,8 @@ export interface Reminder {
   status: Status;
   shortDescription: string;
   fullDescription: string;
-  creationDatetime: Date;
-  dueDatetime: Date;
+  creationDatetime: string;
+  dueDatetime: string;
 }
 
 export const tableHeaders = {

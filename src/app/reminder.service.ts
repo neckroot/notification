@@ -3,15 +3,27 @@ import { BehaviorSubject } from 'rxjs';
 import { Reminder } from './reminder.model';
 import { reminderList } from './mock-data';
 import { Router } from '@angular/router';
-import { Location } from '@angular/common';
+import { formatDate, Location } from '@angular/common';
 
 @Injectable({
   providedIn: 'root',
 })
 export class ReminderService {
-  public reminders$ = new BehaviorSubject<Reminder[]>(reminderList);
+  public reminders$ = new BehaviorSubject<Reminder[]>(this.reminderList);
   private _router = inject(Router);
   private _location = inject(Location);
+
+  public get reminderList(): Reminder[] {
+    return reminderList.map((reminder) => ({
+      ...reminder,
+      creationDatetime: formatDate(
+        reminder.creationDatetime,
+        'dd-MM-yyyy HH:mm',
+        'en',
+      )!,
+      dueDatetime: formatDate(reminder.dueDatetime, 'dd-MM-yyyy HH:mm', 'en')!,
+    }));
+  }
 
   public goToDetails(remindersID: number) {
     this._router.navigate(['/details', remindersID]);
